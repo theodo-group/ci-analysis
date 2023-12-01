@@ -1,0 +1,22 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.ts -o dist",
+    "calc": "pnpm run build && . ./.env.rc && node dist/index.js",
+    "csv": "pnpm run build && . ./.env.rc && node dist/index.js --save-csv"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.8"
+  },
+  "devDependencies": {
+    "ncc": "^0.3.6",
+    "typescript": "^5.2.2"
+  }
+}

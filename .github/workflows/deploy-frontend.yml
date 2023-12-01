@@ -40,14 +40,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build
-        run: pnpm run build
+        run: cd frontend && pnpm run build
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload dist repository
-          path: "./dist"
+          path: "./frontend/dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2

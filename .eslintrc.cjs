@@ -124,7 +124,7 @@ module.exports = {
       ],
       parser: "@typescript-eslint/parser",
       parserOptions: {
-        project: "tsconfig.json",
+        project: ["frontend/tsconfig.json", "cli/tsconfig.json"],
       },
       rules: {
         "@typescript-eslint/prefer-optional-chain": "error",

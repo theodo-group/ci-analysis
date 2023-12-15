@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/minimist": "^1.2.5",
     "minimist": "^1.2.8"
   },
   "devDependencies": {

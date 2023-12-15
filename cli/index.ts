@@ -1,9 +1,10 @@
-import parseArgs from 'minimist';
+import parseArgs from "minimist";
 
 enum Providers {
-  GITHUB = 'github',
+  GITHUB = "github",
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface Workflow {
   id: number;
   jobs_url: string;
@@ -13,6 +14,7 @@ interface Workflow {
   created_at: string;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface Job {
   total_count: number;
   workflow: {
@@ -32,21 +34,34 @@ interface Job {
   }[];
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface ScriptParameters {
   saveCsv: boolean;
 }
 
-const getParameters = (
-  env: Record<string, unknown>
-): { owner: string, repo: string, token: string, max: number, provider: Providers } => {
-  const { owner, repo, token, max, provider } = parseArgs(process.argv, { alias: { o: 'owner', r: 'repo', t: 'token', m: 'max', p: 'provider' }, string: ['owner', 'repo', 'token', 'max'], default: { provider: Providers.GITHUB } });
+interface Config {
+  owner: string;
+  repo: string;
+  token: string;
+  max: number;
+  provider: Providers;
+}
+
+const getParameters = (): Config => {
+  const { owner, repo, token, max, provider } = parseArgs<
+    Omit<Config, "max"> & { max: string }
+  >(process.argv, {
+    alias: { o: "owner", r: "repo", t: "token", m: "max", p: "provider" },
+    string: ["owner", "repo", "token", "max"],
+    default: { provider: Providers.GITHUB },
+  });
 
   if (
     owner !== "" &&
     repo !== "" &&
     token !== "" &&
     max !== "" &&
-    !isNaN(parseInt(max)) && 
+    !isNaN(parseInt(max)) &&
     Object.values(Providers).includes(provider)
   ) {
     return { owner, repo, token, max: parseInt(max), provider };
@@ -57,7 +72,7 @@ const getParameters = (
 
 const { owner, repo, token, max, provider } = getParameters(process.env);
 
-if (provider !== Providers.GITHUB) { 
+if (provider !== Providers.GITHUB) {
   throw new Error("Only github is supported for now");
 }
 

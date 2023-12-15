@@ -1,15 +1,16 @@
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  ignorePatterns: [
+    "**/node_modules/",
+    "**/dist/",
+    "**/public/",
+    ".eslintrc.cjs",
   ],
-  ignorePatterns: ["**/node_modules/", "**/dist/", "**/public/"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "tsconfig.eslint.json",
+    project: ["frontend/tsconfig.json", "cli/tsconfig.json"],
     tsconfigRootDir: __dirname,
     sourceType: "module",
   },
@@ -23,6 +24,7 @@ module.exports = {
     "risxss",
     "testing-library",
     "react-refresh",
+    "prettier",
   ],
   rules: {
     "import/extensions": 0,
@@ -34,6 +36,7 @@ module.exports = {
     "max-depth": ["error", 3],
     "max-params": ["error", 4],
     eqeqeq: ["error", "smart"],
+    "prettier/prettier": "error",
     "import/no-extraneous-dependencies": [
       "error",
       {

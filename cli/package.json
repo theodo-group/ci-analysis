@@ -13,11 +13,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/minimist": "^1.2.5",
     "minimist": "^1.2.8"
   },
   "devDependencies": {
-    "ncc": "^0.3.6",
+    "@types/minimist": "^1.2.5",
+    "@vercel/ncc": "0.38.1",
     "typescript": "^5.2.2"
   }
 }

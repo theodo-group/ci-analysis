@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node-terminal",
+      "request": "launch",
+      "name": "Debug cli",
+      "command": "pnpm run calc",
+      "sourceMaps": true,
+      "preLaunchTask": "tsc: build - cli/tsconfig.json",
+      "outFiles": ["${workspaceFolder}/cli/dist/**/*.js"],
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/cli"
+    }
+  ]
+}

@@ -3,22 +3,25 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "ncc build index.ts -o dist",
-    "calc": "pnpm run build && . ./.env.rc && node dist/index.js",
-    "csv": "pnpm run build && . ./.env.rc && node dist/index.js --save-csv"
+    "calc": "pnpm run build && node dist/index.js",
+    "csv": "pnpm run build && node dist/index.js --save-csv"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "minimist": "^1.2.8"
+    "minimist": "^1.2.8",
+    "axios": "^1.6.2"
   },
   "devDependencies": {
     "@types/minimist": "^1.2.5",
     "@types/node": "^20.10.4",
     "@vercel/ncc": "0.38.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "ts-node": "^10.9.2"
   }
 }
